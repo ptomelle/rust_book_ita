@@ -170,7 +170,7 @@ quando implementiamo il trait su un tipo:
 ```
 
 Dopo aver definito `summarize_author`, possiamo chiamare `summarize` su istanze del
-struct `Tweet`, e l'implementazione predefinita di `summarize` chiamerà il
+struct `Tweet`, e l'implementazione predefinita di `summarize` chiamerà la
 definizione di `summarize_author` che abbiamo fornito. Poiché abbiamo implementato
 `summarize_author`, il trait `Summary` ci ha dato il comportamento del
 metodo `summarize` senza obbligarci a scrivere altro codice.
@@ -210,8 +210,8 @@ perché quei tipi non implementano `Summary`.
 
 #### Sintassi di Trait Bound
 
-La sintassi `impl Trait` funziona per casi semplici ma è in realtà sintassi
-zucchero per una forma più lunga nota come un *trait bound*; sembra così:
+La sintassi `impl Trait` funziona per casi semplici ma è in realtà 
+  zucchero sintattico per una forma più lunga nota come un *trait bound*; sembra così:
 
 ```rust,ignore
 pub fn notify<T: Summary>(item: &T) {
