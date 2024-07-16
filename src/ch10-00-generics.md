@@ -1,4 +1,4 @@
-# Tipi generici, Traits e Durate
+# Tipi generici, Traits e LifeTimes
 
 Ogni linguaggio di programmazione ha strumenti per gestire efficacemente la duplicazione
 dei concetti. In Rust, uno di questi strumenti sono i *generici*: rappresentanti astratti per
@@ -21,8 +21,8 @@ Quindi imparerai come usare i *traits* per definire comportamenti in modo generi
 combinare i traits con i tipi generici per vincolare un tipo generico ad accettare
 solo quei tipi che hanno un comportamento particolare, invece di qualsiasi tipo.
 
-Infine, discuteremo le *durate*: una varietà di generici che forniscono al
-compilatore informazioni su come le referenze si riferiscono l'una all'altra. Le durate ci permettono
+Infine, discuteremo le *lifetimes*: una varietà di generici che forniscono al
+compilatore informazioni su come le referenze si riferiscono l'una all'altra. Le lifetimes ci permettono
 di fornire al compilatore abbastanza informazioni sui valori presi in prestito in modo che possa
 garantire che le referenze saranno valide in più situazioni di quelle che potrebbe senza il nostro
 aiuto.

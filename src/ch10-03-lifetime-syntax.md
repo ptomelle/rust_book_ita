@@ -7,7 +7,7 @@ i references siano validi per tutto il tempo di cui abbiamo bisogno.
 Un dettaglio che non abbiamo discusso nella sezione [“References and
 Borrowing”][references-and-borrowing]<!-- ignore --> nel Capitolo 4 è
 che ogni reference in Rust ha una *Lifetime*, che è l'ambito per il quale
-quel reference è valido. La maggior parte del tempo, le Lifetimes sono implicite e inferite,
+quel reference è valido. Le Lifetimes sono implicite e inferite,
 proprio come la maggior parte del tempo, i tipi sono inferiti. Dobbiamo solo annotare i tipi
 quando sono possibili più tipi. Allo stesso modo, dobbiamo annotare le Lifetimes
 quando le Lifetimes dei references potrebbero essere correlate in diversi modi. Rust
