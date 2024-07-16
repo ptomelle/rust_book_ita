@@ -40,7 +40,7 @@ scelta predefinita della maggior parte dei programmatori Rust.
 Quando usiamo un parametro nel corpo della funzione, dobbiamo dichiarare il
 nome del parametro nella firma in modo che il compilatore sappia cosa significa quel nome.
 Allo stesso modo, quando usiamo un nome del parametro di tipo in una firma di funzione, noi
-deve dichiarare il nome del parametro di tipo prima di usarlo. Per definire il generico
+deve dichiarare il nome del parametro di tipo prima di usarlo. Per definire la generica
 funzione `largest`, posizionare le dichiarazioni del nome del tipo tra le parentesi angolari, `<>`,
 tra il nome della funzione e l'elenco dei parametri, così:
 
@@ -284,7 +284,7 @@ Vediamo come funziona usando l'enum generico `Option<T>` della libreria standard
 let integer = Some(5);
 let float = Some(5.0);
 ```
-Quando Rust compila questo codice, esegue la monomorfizzazione. Durante quel
+Quando Rust compila questo codice, esegue la monorfizzazione. Durante quel
 processo, il compilatore legge i valori che sono stati utilizzati nelle istanze `Option<T>`
 e identifica due tipi di `Option<T>`: uno è `i32` e l'altro
 è `f64`. Di conseguenza, espande la definizione generica di `Option<T>` in due
