@@ -2,7 +2,7 @@
 
 Un *trait* definisce le funzionalità che un particolare tipo ha e può condividere con altri
 tipi. Possiamo usare i trait per definire un comportamento condiviso in modo astratto. Possiamo
-usare i *limiti dei trait* per specificare che un tipo generico può essere qualsiasi tipo che ha
+usare i *trait bounds* per specificare che un tipo generico può essere qualsiasi tipo che ha
 un certo comportamento.
 
 > Nota: I Traits sono simili a una caratteristica spesso chiamata *interface* in altri
@@ -226,7 +226,7 @@ dopo due punti e all'interno delle parentesi angolari.
 La sintassi `impl Trait` è comoda e rende il codice più conciso in casi semplici,
 mentre la sintassi completa del trait bound può esprimere più complessità in altri
 casi. Ad esempio, possiamo avere due parametri che implementano `Summary`. Fare
-come con la sintassi `impl Trait` sembra così:
+come con la sintassi `impl Trait` appare così:
 
 ```rust,ignore
 pub fn notify(item1: &impl Summary, item2: &impl Summary) {
@@ -266,11 +266,11 @@ e usare `{}` per formattare `item`.
 
 #### Clearer Trait Bounds con Clausole `where`
 
-Usare troppi limiti dei trait ha i suoi svantaggi. Ogni generico ha i suoi trait
+Usare troppi trait bounds ha i suoi svantaggi. Ogni generico ha i suoi trait
 bounds, quindi le funzioni con molti parametri di tipo generico possono contenere un sacco di
 informazioni sui trait bound tra il nome della funzione e la sua lista di parametri,
-rendendo difficile da leggere la firma della funzione. Per questo motivo, Rust ha alternativa
-sintassi per specificare i trait bounds all'interno di una clausola `where` dopo la firma della funzione. Quindi invece di scrivere questo:
+rendendo difficile da leggere la firma della funzione. Per questo motivo, Rust ha una alternativa
+sintassi alternativa per specificare i trait bounds all'interno di una clausola `where` dopo la firma della funzione. Quindi invece di scrivere questo:
 
 ```rust,ignore
 fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
@@ -282,7 +282,7 @@ possiamo usare una clausola `where`, così:
 {{#rustdoc_include ../listings/ch10-generic-types-traits-and-lifetimes/no-listing-07-where-clause/src/lib.rs:here}}
 ```
 
-La firma di questa funzione è meno ingombra: il nome della funzione, la lista dei parametri,
+La firma di questa funzione è meno ingombrante: il nome della funzione, la lista dei parametri,
 e il tipo di ritorno sono vicini, simili a una funzione senza un sacco di trait
 bounds.
 
@@ -322,9 +322,9 @@ Permettono valori di diversi
 tipi"][using-trait-objects-that-allow-for-values-of-different-types]<!--
 ignore --> del Capitolo 17.
 
-### Usare i limiti dei Trait per implementare condizionatamente i metodi
+### Usare i  Trait Bounds per implementare condizionatamente i metodi
 
-Utilizzando un limite di trait con un blocco `impl` che usa parametri di tipo generico,
+Utilizzando un trait bound con un blocco `impl` che usa parametri di tipo generico,
 possiamo implementare metodi condizionatamente per i tipi che implementano i trait
 specificati. Ad esempio, il tipo `Pair<T>` nel Listato 10-15 implementa sempre la
 funzione `new` per restituire una nuova istanza di `Pair<T>` (ricorda dalla
@@ -341,11 +341,11 @@ che abilita il confronto *e* il trait `Display` che abilita la stampa.
 ```
 
 <span class="caption">Listato 10-15: Implementazione condizionata dei metodi su un
-tipo generico in base ai limiti dei trait</span>
+tipo generico in base ai  trait bounds</span>
 
 Possiamo anche implementare condizionatamente un trait per qualsiasi tipo che implementa
-un altro trait. Le implementazioni di un trait su qualsiasi tipo che soddisfa i limiti del trait
-sono chiamate *implementazioni generali* e sono ampiamente utilizzate nella
+un altro trait. Le implementazioni di un trait su qualsiasi tipo che soddisfa i trait bounds
+sono chiamate *blanket implementations* e sono ampiamente utilizzate nella
 libreria standard di Rust. Ad esempio, la libreria standard implementa il
 trait `ToString` su qualsiasi tipo che implementa il trait `Display`. Il blocco `impl`
 nella libreria standard assomiglia a questo codice:
@@ -365,12 +365,12 @@ valori `String` in questo modo perché gli interi implementano `Display`:
 let s = 3.to_string();
 ```
 
-Le implementazioni generiche appaiono nella documentazione del trait nella
-sezione "Implementatori".
+Le blanket implementations appaiono nella documentazione del trait nella
+sezione "Implementors".
 
-I trait e i limiti dei trait ci permettono di scrivere codice che utilizza parametri di tipo generico per
-ridurre la duplicazione ma anche specificare al compilatore che vogliamo che il tipo generico abbia un comportamento particolare. Il compilatore può quindi utilizzare le informazioni del limite del trait
-per controllare che tutti i tipi concreti utilizzati con il nostro codice forniscono il
+I trait e i trait bounds ci permettono di scrivere codice che utilizza parametri di tipo generico per
+ridurre la duplicazione ma anche specificare al compilatore che vogliamo che il tipo generico abbia un comportamento particolare. Il compilatore può quindi utilizzare le informazioni del trait bound
+per controllare che tutti i tipi concreti utilizzati con il nostro codice forniscano il
 comportamento corretto. Nei linguaggi tipizzati dinamicamente, riceveremmo un errore al
 runtime se chiamassimo un metodo su un tipo che non definisce il metodo. Ma Rust
 sposta questi errori al tempo di compilazione in modo da costringerci a risolvere i problemi prima
